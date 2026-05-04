@@ -1,0 +1,2062 @@
+<meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <title>NeuroGen | No One Navigates Their Brain Alone</title>
+    
+    <style>
+        /* ============================================
+           RESET AND BASE
+        ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2D6A9F;
+            --primary-dark: #1a4f7a;
+            --primary-light: #5B9FD4;
+            --accent: #F4A261;
+            --accent-dark: #E07B2A;
+            --green: #52B788;
+            --green-dark: #3a8a63;
+            --dark: #1a1a2e;
+            --dark-mid: #2d2d44;
+            --text: #2c2c2c;
+            --text-light: #666666;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-grey: #e9ecef;
+            --border: #dee2e6;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 40px rgba(0,0,0,0.15);
+            --radius: 12px;
+            --radius-large: 24px;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        /* ============================================
+           TYPOGRAPHY
+        ============================================ */
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+        h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); }
+        h4 { font-size: 1.2rem; }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* ============================================
+           UTILITIES
+        ============================================ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-alt {
+            background: var(--off-white);
+        }
+
+        .section-dark {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .section-dark p {
+            color: rgba(255,255,255,0.75);
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-dark .section-label {
+            color: var(--accent);
+        }
+
+        .section-title {
+            margin-bottom: 24px;
+            color: var(--dark);
+        }
+
+        .section-dark .section-title {
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-center .section-subtitle {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .highlight-accent {
+            color: var(--accent);
+        }
+
+        /* ============================================
+           BUTTONS
+        ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(45, 106, 159, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(45, 106, 159, 0.4);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(244, 162, 97, 0.3);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(244, 162, 97, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.6);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-green {
+            background: var(--green);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(82, 183, 136, 0.3);
+        }
+
+        .btn-green:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           NAVIGATION
+        ============================================ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(20px);
+            padding: 14px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .nav-logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .nav.scrolled .nav-logo-text {
+            color: var(--dark);
+        }
+
+        .nav:not(.scrolled) .nav-logo-text {
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .nav.scrolled .nav-links a {
+            color: var(--text);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
+        }
+
+        .nav.scrolled .nav-links a:hover {
+            background: var(--light-grey);
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--accent) !important;
+            color: var(--white) !important;
+            border-radius: 50px !important;
+            padding: 10px 24px !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav.scrolled .nav-hamburger span {
+            background: var(--dark);
+        }
+
+        /* ============================================
+           HERO
+        ============================================ */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-mid) 40%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 80px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.06;
+        }
+
+        .hero-circle-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary-light);
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero-circle-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            bottom: -150px;
+            left: -100px;
+        }
+
+        .hero-circle-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--green);
+            top: 40%;
+            left: 40%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 48px;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
+        }
+
+        /* ============================================
+           MARQUEE STRIP
+        ============================================ */
+        .marquee-strip {
+            background: var(--primary);
+            padding: 16px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0 32px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .marquee-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ============================================
+           ABOUT SECTION
+        ============================================ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-card-main {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-large);
+            padding: 48px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card-main::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+
+        .about-quote {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent);
+            line-height: 0.5;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .about-founder {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-founder-avatar {
+            width: 52px;
+            height: 52px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .about-founder-info h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .about-founder-info p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+
+        .about-card-float {
+            position: absolute;
+            bottom: -24px;
+            right: -24px;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .about-card-float-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--green);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .about-card-float-text h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        .about-card-float-text p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .about-content .section-subtitle {
+            margin-bottom: 32px;
+        }
+
+        .about-points {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .about-point {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .about-point-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: rgba(45, 106, 159, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .about-point-text h4 {
+            font-size: 1rem;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .about-point-text p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           PROGRAMS
+        ============================================ */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: var(--radius-large);
+            padding: 40px 32px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .program-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .program-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 24px;
+        }
+
+        .program-card h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .program-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .program-link {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .program-link:hover {
+            gap: 10px;
+        }
+
+        /* ============================================
+           STATS SECTION
+        ============================================ */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--dark));
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 32px 24px;
+            border-radius: var(--radius);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-label {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           WHO WE SERVE
+        ============================================ */
+        .serve-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .serve-card {
+            text-align: center;
+            padding: 40px 24px;
+            border-radius: var(--radius-large);
+            background: var(--white);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .serve-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+
+        .serve-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .serve-card h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .serve-card p {
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           FOUNDER SECTION
+        ============================================ */
+        .founder-section {
+            background: var(--off-white);
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .founder-visual {
+            position: relative;
+        }
+
+        .founder-card {
+            background: linear-gradient(135deg, var(--dark), var(--dark-mid));
+            border-radius: var(--radius-large);
+            padding: 48px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .founder-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 0 auto 24px;
+            color: white;
+        }
+
+        .founder-card h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .founder-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .founder-credentials {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .credential-badge {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.85);
+            font-weight: 600;
+        }
+
+        .founder-content blockquote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--dark);
+            border-left: 4px solid var(--accent);
+            padding-left: 24px;
+            margin-bottom: 32px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .founder-content p {
+            margin-bottom: 20px;
+        }
+
+        /* ============================================
+           IMPACT SECTION
+        ============================================ */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .impact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .impact-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 24px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .impact-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .impact-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            min-width: 60px;
+        }
+
+        .impact-text h4 {
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .impact-text p {
+            font-size: 0.9rem;
+        }
+
+        .impact-visual {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-large);
+            padding: 48px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .impact-visual h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+        }
+
+        .impact-visual p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 32px;
+        }
+
+        /* ============================================
+           GET INVOLVED
+        ============================================ */
+        .involved-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .involved-card {
+            border-radius: var(--radius-large);
+            padding: 48px 32px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .involved-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .involved-card-1 {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .involved-card-2 {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+        }
+
+        .involved-card-3 {
+            background: linear-gradient(135deg, var(--green), var(--green-dark));
+            color: white;
+        }
+
+        .involved-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .involved-card h3 {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .involved-card p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--dark);
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* ============================================
+           NEWSLETTER
+        ============================================ */
+        .newsletter-section {
+            background: var(--dark);
+            padding: 80px 0;
+        }
+
+        .newsletter-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-inner h2 {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .newsletter-inner p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 40px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 24px;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* ============================================
+           CONTACT
+        ============================================ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: rgba(45, 106, 159, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-item h4 {
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .contact-item p {
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: var(--off-white);
+            border-radius: var(--radius-large);
+            padding: 48px 40px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--white);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(45, 106, 159, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        .footer {
+            background: var(--dark);
+            padding: 80px 0 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.6);
+            margin: 16px 0 24px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.55);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--accent);
+        }
+
+        .charity-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(82, 183, 136, 0.15);
+            border: 1px solid rgba(82, 183, 136, 0.3);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           MOBILE RESPONSIVE
+        ============================================ */
+        @media (max-width: 1024px) {
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .serve-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 70px 0;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--dark);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 16px;
+                z-index: 999;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.3rem;
+                color: white !important;
+            }
+
+            .nav-hamburger {
+                display: flex;
+                z-index: 1000;
+            }
+
+            .about-grid,
+            .founder-grid,
+            .impact-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .programs-grid,
+            .involved-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .serve-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .hero-stats {
+                gap: 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                min-width: unset;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .about-card-float {
+                position: relative;
+                bottom: unset;
+                right: unset;
+                margin-top: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .serve-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-stat-number {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+        ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+        .fade-in-delay-4 { transition-delay: 0.4s; }
+        .fade-in-delay-5 { transition-delay: 0.5s; }
+        .fade-in-delay-6 { transition-delay: 0.6s; }
+    </style>
+
+
+
+
+    
+    <nav>
+        
+            
+                
+                    NG
+                    NeuroGen
+                
+                
+                    About
+                    Programs
+                    Who We Serve
+                    Our Founder
+                    Get Involved
+                    Contact
+                    Donate
+                
+                
+                    
+                    
+                    
+                
+            
+        
+    </nav>
+
+    
+    <section>
+        
+            
+            
+            
+        
+        
+            
+                
+                    
+                    Canadian Non-Profit · Est. 2025 · Toronto, Ontario
+                
+                No One NavigatesTheir Brain Alone.
+                NeuroGen is Canada's community-first organization for neurodivergent individuals — providing peer support, advocacy, arts programming, and employer education for those with ADHD, Autism, Dyslexia, and related conditions.
+                
+                    Explore Our Programs
+                    Join the Community
+                
+                
+                    
+                        1 in 5
+                        Canadians are neurodivergent
+                    
+                    
+                        70%
+                        Feel isolated without support
+                    
+                    
+                        0
+                        Community-first platforms existed
+                    
+                
+            
+        
+    </section>
+
+    
+    
+        
+            Peer Community Support
+            Resource Navigation
+            Neurodivergent Advocacy
+            Arts Programming
+            Employer Education
+            ADHD Support
+            Autism Community
+            Dyslexia Resources
+            Toronto · Ontario · Canada
+            Peer Community Support
+            Resource Navigation
+            Neurodivergent Advocacy
+            Arts Programming
+            Employer Education
+            ADHD Support
+            Autism Community
+            Dyslexia Resources
+            Toronto · Ontario · Canada
+        
+    
+
+    
+    <section>
+        
+            
+                
+                    
+                        
+                            The community I needed did not exist. So I built it.
+                        
+                        
+                            PD
+                            
+                                Payal Dave
+                                Founder · Neurodivergent · Author · National Champion
+                            
+                        
+                    
+                    
+                        🍁
+                        
+                            Proudly Canadian
+                            Federally incorporated · Toronto, ON
+                        
+                    
+                
+                
+                    About NeuroGen
+                    Built by lived experience.Powered by community.
+                    NeuroGen was founded because a critical gap existed in Canada's support ecosystem — neurodivergent individuals, especially those from underserved communities, had nowhere to turn that truly understood their experience.
+                    
+                        
+                            🧠
+                            
+                                Community First
+                                Every program is designed around peer connection and lived experience — not clinical distance.
+                            
+                        
+                        
+                            🤝
+                            
+                                Equity Centered
+                                We serve those most underserved — ensuring cultural competence and accessibility at every level.
+                            
+                        
+                        
+                            🌱
+                            
+                                Sustainably Funded
+                                Government grants, charitable donations, and institutional partnerships keep all programs free.
+                            
+                        
+                        
+                            🇨🇦
+                            
+                                Nationally Minded
+                                Based in Toronto, serving neurodivergent Canadians from coast to coast.
+                            
+                        
+                    
+                    See Our Programs →
+                
+            
+        
+    
+
+    
+    
+        
+            
+                
+                    1 in 5
+                    Canadians are neurodivergent
+                
+                
+                    70%
+                    Report feeling isolated and unsupported
+                
+                
+                    3×
+                    Higher unemployment among neurodivergent adults
+                
+                
+                    $0
+                    Cost to join our community programs
+                
+            
+        
+    
+
+    
+    <section>
+        
+            
+                Our Programs
+                Everything you need.All in one community.
+                Six programs designed to support every dimension of neurodivergent life — from daily survival to long-term thriving.
+            
+            
+                
+                    🤝
+                    NeuroGen Community Hub
+                    Free online peer community connecting neurodivergent Canadians. Share experiences, find support, and know you are not alone.
+                    Join the community →
+                
+                
+                    🧭
+                    NeuroGen Navigate
+                    Free resource navigation for newly diagnosed adults — cutting through the confusion to find the right support faster.
+                    Get guidance →
+                
+                
+                    🌍
+                    NeuroGen Newcomers
+                    Culturally competent neurodivergent support for immigrant communities — in the language and context that makes sense.
+                    Learn more →
+                
+                
+                    💼
+                    NeuroGen Works
+                    Employment readiness and workplace advocacy for neurodivergent job seekers — because your brain is an asset, not a barrier.
+                    Find your path →
+                
+                
+                    🎨
+                    NeuroGen Arts
+                    Arts and creative programming where neurodivergent expression is celebrated — writing, music, visual arts, and more.
+                    Create with us →
+                
+                
+                    📢
+                    NeuroGen Voices
+                    Lived experience speakers bureau and systemic advocacy — changing policies, workplaces, and public understanding.
+                    Add your voice →
+                
+            
+        
+    
+
+    
+    <section>
+        
+            
+                Who We Serve
+                Every neurodivergent brainbelongs here.
+                NeuroGen serves all neurodivergent individuals — with dedicated programs for those facing compounded barriers.
+            
+            
+                
+                    ⚡
+                    ADHD
+                    Attention Deficit Hyperactivity Disorder — peer support, strategies, and community for adults and youth.
+                
+                
+                    🌟
+                    Autism Spectrum
+                    Community, resources, and advocacy for autistic Canadians navigating a world not built for them.
+                
+                
+                    📚
+                    Dyslexia
+                    Support, community, and resources for those with dyslexia, dyscalculia, and related learning differences.
+                
+                
+                    ✨
+                    Giftedness
+                    For the twice exceptional — those whose extraordinary capacity has been misunderstood as a problem.
+                
+            
+        
+    
+
+    
+    <section>
+        
+            
+                
+                    
+                        PD
+                        Payal Dave
+                        Founder & Executive Director
+                        
+                            🏆 6× National Table Tennis Champion
+                            📚 15 Published Books
+                            🎓 3 Graduate Degrees
+                            📜 PMP · ACSM Certified
+                            🇨🇦 Canadian Citizen · South Asian
+                            🧠 Neurodivergent · Lived Experience
+                        
+                    
+                
+                
+                    Our Founder
+                    Built by someone who needed it.
+                    "I am neurodivergent. I am an immigrant. I am a woman. I looked for the community that understood all of that simultaneously — and it did not exist. So I built it."
+                    Payal Dave is a South Asian immigrant woman, Canadian citizen, neurodivergent entrepreneur, six-time national athletic champion, and author of fifteen books. She built NeuroGen from lived experience — having navigated the Canadian system as someone with ADHD, without culturally competent support, without a community that understood the intersection of neurodivergence and newcomer experience.
+                    Her credentials span engineering, forensic science, project management, exercise science, and entrepreneurship. Her experience spans survival, rebuilding, and the kind of resilience that only comes from having no other option.
+                    NeuroGen is not a theory. It is the organization she built because she needed it and it did not exist.
+                    Connect With Payal →
+                
+            
+        
+    
+
+    
+    <section>
+        
+            
+                Our Impact
+                What we are buildingtogether.
+            
+            
+                
+                    
+                        01
+                        
+                            Community Before Everything
+                            Peer connection is the first intervention. Before resources, before advocacy — belonging.
+                        
+                    
+                    
+                        02
+                        
+                            Employer Education That Changes Workplaces
+                            Training employers to recognize neurodivergent strengths — not just accommodate differences.
+                        
+                    
+                    
+                        03
+                        
+                            Arts as Healing and Expression
+                            Creative programming that recognizes neurodivergent artistic expression as a strength, not a symptom.
+                        
+                    
+                    
+                        04
+                        
+                            Advocacy That Changes Policy
+                            Systemic change through lived experience voices — at every level of Canadian policy and public life.
+                        
+                    
+                
+                
+                    Our 2027 Goal
+                    10,000 neurodivergent Canadians actively supported through NeuroGen programs — with zero cost to participants.
+                    
+                        
+                            Community Growth
+                            Building
+                        
+                        
+                            
+                        
+                    
+                    Support Our Mission
+                
+            
+        
+    
+
+    
+    <section>
+        
+            
+                Get Involved
+                Three ways to bepart of this.
+                Whether you are neurodivergent, an ally, an employer, or simply someone who believes in this mission — there is a place for you here.
+            
+            
+                
+                    🧠
+                    Join the Community
+                    Free membership. Peer support. Resources. Events. A community that finally gets it.
+                    Join Free →
+                
+                
+                    💛
+                    Donate
+                    Every dollar keeps our programs free for those who need them most. Your donation makes this possible.
+                    Donate Today →
+                
+                
+                    🏢
+                    Partner With Us
+                    Employers, organizations, and funders — build a neurodivergent-inclusive future with us.
+                    Let's Talk →
+                
+            
+        
+    
+
+    
+    
+        
+            
+                Stay Connected
+                Join the NeuroGen Newsletter
+                Resources, community updates, events, and advocacy news — delivered to your inbox. Free. Always.
+                <form>
+                    
+                    Subscribe Free
+                </form>
+            
+        
+    
+
+    
+    <section>
+        
+            
+                Contact Us
+                We would loveto hear from you.
+            
+            
+                
+                    
+                        Get in touch
+                        Whether you are looking for support, want to volunteer, are an employer interested in neurodiversity training, or a funder aligned with our mission — reach out.
+                    
+                    
+                        📍
+                        
+                            Location
+                            10 Markbrook Lane, TorontoOntario, Canada M9V 5E5
+                        
+                    
+                    
+                        📧
+                        
+                            Email
+                            info@neurogen.ca
+                        
+                    
+                    
+                        🏢
+                        
+                            Corporation
+                            NeuroGen · Corporation No. 16768415Incorporated February 2025
+                        
+                    
+                    
+                        ✅ Registered Canadian Non-Profit Organization
+                    
+                
+                
+                    
+                        
+                            
+                                First Name
+                                
+                            
+                            
+                                Last Name
+                                
+                            
+                        
+                        
+                            Email Address
+                            
+                        
+                        
+                            I am reaching out as a...
+                            
+                                Select one
+                                Neurodivergent individual seeking support
+                                Family member or caregiver
+                                Employer or HR professional
+                                Funder or grant maker
+                                Volunteer or collaborator
+                                Media or journalist
+                                Other
+                            
+                        
+                        
+                            Message
+                            
+                        
+                        Send Message →
+                    
+                
+            
+        
+    
+
+    
+    <footer>
+        
+            
+                
+                    
+                        NG
+                        NeuroGen
+                    
+                    Canada's community-first organization for neurodivergent individuals. No one navigates their brain alone.
+                    
+                        in
+                        ig
+                        fb
+                        𝕏
+                    
+                
+                
+                    Programs
+                    
+                        Community Hub
+                        NeuroGen Navigate
+                        Newcomers Program
+                        NeuroGen Works
+                        Arts Programming
+                        NeuroGen Voices
+                    
+                
+                
+                    Organization
+                    
+                        About NeuroGen
+                        Our Founder
+                        Our Impact
+                        Get Involved
+                        Donate
+                        Contact
+                    
+                
+                
+                    Resources
+                    
+                        ADHD Resources
+                        Autism Support
+                        Employer Guide
+                        Newsletter
+                        Events
+                        Blog
+                    
+                
+            
+            
+                © 2025 NeuroGen · Corporation No. 16768415 · Toronto, Ontario, Canada · All rights reserved.
+                
+                    Privacy Policy
+                    Accessibility
+                    Terms
+                
+            
+        
+    </footer>
+
+    
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('open');
+        }
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Newsletter form
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.textContent = '✅ Subscribed!';
+            btn.style.background = '#52B788';
+            setTimeout(() => {
+                btn.textContent = 'Subscribe Free';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        }
+
+        // Contact form
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.textContent = '✅ Message Sent!';
+            btn.style.background = '#52B788';
+            setTimeout(() => {
+                btn.textContent = 'Send Message →';
+                btn.style.background = '';
+                e.target.reset();
+            }, 3000);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
